@@ -3,6 +3,7 @@ import HeaderLeftSide from "./header/header-left-side";
 import BackgroundSpot from "./components/backGroundSpot";
 import HeaderRightSide from "./header/header-right-side";
 import SecondBlock from "./second-block/secondBlock";
+import ReadyToSell from "./ready-to-sell-block/readyToSell";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <HeaderRightSide/>
       </header>
       <SecondBlock/>
+      <ReadyToSell/>
     </div>
   )
 }
