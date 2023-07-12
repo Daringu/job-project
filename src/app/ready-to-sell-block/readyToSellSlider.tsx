@@ -18,7 +18,7 @@ export default function readyToSellSlides(array: any[], handleClick: any) {
         return (
             <div style={{ display: 'flex', gap: '148px', flexShrink: 0, }} key={i}>
                 <div className='readyTosellSlideContainer'>
-                    <Mention styles={{ display: 'flex', alignItems: 'center', gap: '8px' }} text='Ready to Sell!' />
+                    <Mention classs={''} styles={{ display: 'flex', alignItems: 'center', gap: '8px' }} text='Ready to Sell!' />
                     <div className='readyTOSellSLideInfo'>
                         <LargeHeader additionalClass='' text='Let’s tour and see our house!' />
                         <P additionalClass='' text='Houses recommended by our partners that have been curated to become the home of your dreams!' />

@@ -61,7 +61,7 @@ export default function FindOutMoreBlock() {
     return (
         <div className="findOutMoreContainer">
             <div className="findOutMoreTextContainer">
-                <Mention styles={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }} text="See tips and trick from our partnership" />
+                <Mention styles={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }} classs={'dsadas'} text="See tips and trick from our partnership" />
                 <LargeHeader additionalClass="sliderWithPaginationHeader" text=" Find out more about
                 selling and buying homes"/>
                 <ButtonWithIcon buttonClass={joinClasses('greenButton', 'searchBoxButton')} iconStyles={{}} handleClick={() => { }} iconClass="" styles={{ marginTop: '24px' }} isIconOnTheLeft={false} textClass="searchButtonText" text="More Artikel" icon={null} />
