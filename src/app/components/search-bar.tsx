@@ -1,28 +1,24 @@
 
 import Image from 'next/image'
-import buttoArrow from '../header/images-for-header/headerButtonArrow.svg'
 import ButtonWithIcon from './ButtonWithIcon'
-import {buttonWithIcon, searchBar} from '../types'
-import { stylesForButton } from '../inlineStyles'
+import { buttonWithIcon, searchBar } from '../types'
+
+import { useState } from 'react'
 
 
 
 
-export default function SearchBar({icon,styles,placeHolder,inputRef,handleBlur,handleFocus,buttonText,handleClick,isFocues}:searchBar) {
-    const props:buttonWithIcon={
-        icon:buttoArrow,
-        isIconOnTheLeft:false,
-        text:buttonText,
-        textClass:'searchButtonText' ,
-        iconClass:'searchButtonIcon' ,
-        buttonClass:'searchBoxButton',
-        styles:{...stylesForButton},
-        handleClick:handleClick,
-        iconStyles:{width:24,height:24}
+export default function SearchBar({ icon, styles, placeHolder, inputRef, buttonProps }: searchBar) {
+    const [isFocused, setFocuse] = useState(false)
+    const handleFocus = () => {
+        setFocuse(true)
+    }
+    const handleBlur = () => {
+        setFocuse(false)
     }
     return (
-        <div style={{...styles}} className={`searchBoxWrapper ${isFocues&&'active'}`}>
-            <div  className="wrapper">
+        <div style={{ ...styles }} className={`searchBoxWrapper ${isFocused && 'active'}`}>
+            <div className="wrapper">
                 <div className="SearchBoxIcon">
                     <Image width={icon.width} height={icon.height} src={icon.src} alt="icon" />
                 </div>
@@ -30,7 +26,7 @@ export default function SearchBar({icon,styles,placeHolder,inputRef,handleBlur,h
                     <input ref={inputRef} onBlur={handleBlur} onFocus={handleFocus} placeholder={placeHolder} className="searchBoxInput" type="text" />
                 </div>
             </div>
-            <ButtonWithIcon {...props} />
+            <ButtonWithIcon {...buttonProps} />
         </div>
     )
 }

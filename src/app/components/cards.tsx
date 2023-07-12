@@ -1,16 +1,13 @@
 import Image from "next/image"
+import { card } from "../types"
 
-export default function cards(array:any[],className:string,textContainerClassName:string,headClass:string,descClass:string) {
-    const torender=array.map((e:any,i:number)=>{
-        return (
-            <div key={e.id} className={className}>
-                <Image height={e.src.height} width={e.src.width} className="cardImage" src={e.src.src} alt="asda"/>
-                <div className={textContainerClassName}>
-                    <h2 className={headClass}>{e.head}</h2>
-                    <p className={descClass}>{e.desc}</p>
-                </div>
-            </div>
-        )
-    })
-    return torender
+export default function Cards({ image, containerClassName, textContainerClassName, headClass, descClass, head, desc, cardImageClass }: card) {
+
+    return (<div className={containerClassName}>
+        <Image height={image.height} width={image.width} className={cardImageClass} src={image.src} alt="asda" />
+        <div className={textContainerClassName}>
+            {head.length > 0 && <h2 className={headClass}>{head}</h2>}
+            {desc.length > 0 && <p className={descClass}>{desc}</p>}
+        </div>
+    </div>)
 }

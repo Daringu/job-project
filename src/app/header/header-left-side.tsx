@@ -1,44 +1,33 @@
-
-import {SearchBar,icon,useState, useRef,logo,Logo,Notify,validateEmail,Companies,setTimeout} from './imports'
-
+import { stylesForButton } from '../inlineStyles'
+import { SearchBar, icon, useState, useRef, logo, Logo, Notify, validateEmail, Companies, setTimeout } from './imports'
+import { P } from '../components/standardTexts'
+import { joinClasses } from '../tools/tools'
+import buttoArrow from '../header/images-for-header/headerButtonArrow.svg'
+import { buttonWithIcon } from '../types'
 
 export default function HeaderLeftSide() {
-    const [isFocused,setFocuse]=useState(false)
-    const wrapperRef:any=useRef(null)
-    const inputRef:any=useRef(null)
-    const placeeHolderText="Search for the location you want!"
-
-    const handleFocus=()=>{
-        setFocuse(true)
-    }
-    const handleBlur=()=> {
-        setFocuse(false)
-    }
-    const handleClick=()=>{
-        if (!validateEmail(inputRef.current.value,Notify)) {
-            wrapperRef.current?.classList.add('blocked')
-            setTimeout(()=>{
-                if (wrapperRef.current?.classList.contains('blocked')) {
-                    wrapperRef.current?.classList.remove('blocked')
-                }
-            },1500)
-        }else{
-            Notify.success('Success')
-        }
+    const placeeHolderText = "Search for the location you want!"
+    const props: buttonWithIcon = {
+        icon: buttoArrow,
+        isIconOnTheLeft: false,
+        text: 'search',
+        textClass: 'searchButtonText',
+        iconClass: 'searchButtonIcon',
+        buttonClass: joinClasses('greenButton', 'searchBoxButton'),
+        styles: { ...stylesForButton },
+        handleClick: () => 1,
+        iconStyles: { width: 24, height: 24 }
     }
     return (
-    <div className="headerLeftSide">
-        <Logo text="Hounter" logoImage={logo}/>
-        <div className="headerLeftCaption">
-            <h1 className="headerLeftCaptionText"> Find The Place To Live 
-                <span className="headerTransparent"> Your Dreams</span> Easily Here
-            </h1>
-            <p className="headerDescription">
-            Everything you need about finding your place to live will be here, where it will be easier for you
-            </p>
-        </div>
-        <SearchBar buttonText="search" placeHolder={placeeHolderText} handleClick={handleClick}icon={icon} styles={{}} 
-        handleFocus={handleFocus} handleBlur={handleBlur} inputRef={inputRef} isFocues={isFocused}/>
-        <Companies/>
-    </div>)
+        <div className="headerLeftSide">
+            <Logo text="Hounter" logoImage={logo} />
+            <div className="headerLeftCaption">
+                <h1 className="headerLeftCaptionText"> Find The Place To Live
+                    <span className="headerTransparent"> Your Dreams</span> Easily Here
+                </h1>
+                <P additionalClass='headerDescription' text='Everything you need about finding your place to live will be here, where it will be easier for you' />
+            </div>
+            <SearchBar buttonProps={props} placeHolder={placeeHolderText} icon={icon} styles={{}} inputRef={null} />
+            <Companies />
+        </div>)
 }

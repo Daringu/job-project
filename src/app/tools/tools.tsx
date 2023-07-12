@@ -11,4 +11,7 @@ function validateEmail(email:string,notify:any) {
     return true
 }
 
-export {validateEmail}
+function joinClasses(...classes:any[]) {
+    return classes.join(' ')
+}
+export {validateEmail,joinClasses}
